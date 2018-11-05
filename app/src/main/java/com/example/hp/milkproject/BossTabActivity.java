@@ -1,14 +1,11 @@
 package com.example.hp.milkproject;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -31,9 +28,6 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -61,7 +55,7 @@ public class BossTabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boss_tab);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Boss Activity");
         // Create the adapter that will return a fragment for each of the three
@@ -72,7 +66,7 @@ public class BossTabActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -87,9 +81,9 @@ public class BossTabActivity extends AppCompatActivity {
                 //dialog.setTitle("Add New Worker");
                 dialog.setCancelable(false);
 
-                final EditText editTextAddWorker = (EditText) dialog.findViewById(R.id.editTextAddWorker);
-                Button buttonAddWorker = (Button) dialog.findViewById(R.id.buttonAdd);
-                Button buttonCancel = (Button) dialog.findViewById(R.id.buttonCancel);
+                final EditText editTextAddWorker = dialog.findViewById(R.id.editTextAddWorker);
+                Button buttonAddWorker = dialog.findViewById(R.id.buttonAdd);
+                Button buttonCancel = dialog.findViewById(R.id.buttonCancel);
 
                 buttonCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -156,7 +150,7 @@ public class BossTabActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
 //            LOG OUT THE USER TO LOGIN PAGE
             FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(BossTabActivity.this, LoginActicity.class);
+            Intent intent = new Intent(BossTabActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
             return true;
@@ -194,7 +188,7 @@ public class BossTabActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_boss_tab, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            TextView textView = rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }

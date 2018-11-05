@@ -26,10 +26,10 @@ public class CowActivity extends android.support.v4.app.Fragment {
 
         progressDialog = new ProgressDialog(getActivity());
 
-        buttonSellCow = (Button) rootView.findViewById(R.id.buttonSellCow);
-        buttonSellMilk = (Button) rootView.findViewById(R.id.buttonSellMilk);
-        buttonAddCow = (Button) rootView.findViewById(R.id.buttonAddCow);
-        buttonView = (Button) rootView.findViewById(R.id.buttonView);
+        buttonSellCow = rootView.findViewById(R.id.buttonSellCow);
+        buttonSellMilk = rootView.findViewById(R.id.buttonSellMilk);
+        buttonAddCow = rootView.findViewById(R.id.buttonAddCow);
+        buttonView = rootView.findViewById(R.id.buttonView);
 
         buttonAddCow.setOnClickListener(new View.OnClickListener() {
             @Override

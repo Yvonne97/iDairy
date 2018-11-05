@@ -38,7 +38,7 @@ public class ShowDataActivity extends AppCompatActivity {
         setContentView(R.layout.fragment_worker_home);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-        listView = (ListView) findViewById(R.id.listView);
+        listView = findViewById(R.id.listView);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -58,49 +58,49 @@ public class ShowDataActivity extends AppCompatActivity {
             protected void populateView(@NonNull View v, @NonNull dataModels model, final int position) {
                 if (model.getUid().equals(userUid)) {
                     if (model.getName() != null) {
-                        TextView textViewName = (TextView) v.findViewById(R.id.textViewName);
+                        TextView textViewName = v.findViewById(R.id.textViewName);
                         textViewName.setText(model.getName());
                         textViewName.setVisibility(View.VISIBLE);
                     }
                     if (model.getQuantity() != null) {
-                        TextView textViewBirth = (TextView) v.findViewById(R.id.textViewQuantity);
+                        TextView textViewBirth = v.findViewById(R.id.textViewQuantity);
                         textViewBirth.setText(model.getQuantity());
                         textViewBirth.setVisibility(View.VISIBLE);
                     }
                     if (model.getMilkedTime() != null) {
-                        TextView textViewBreed = (TextView) v.findViewById(R.id.textViewmilked);
+                        TextView textViewBreed = v.findViewById(R.id.textViewmilked);
                         textViewBreed.setText(model.getMilkedTime());
                         textViewBreed.setVisibility(View.VISIBLE);
                     }
 
                     if (model.getKg() != null) {
-                        TextView textViewKG = (TextView) v.findViewById(R.id.textViewKG);
+                        TextView textViewKG = v.findViewById(R.id.textViewKG);
                         textViewKG.setText(model.getKg());
                         textViewKG.setVisibility(View.VISIBLE);
                     }
 
                     if (model.getMessage() != null) {
-                        TextView textViewMessage = (TextView) v.findViewById(R.id.textViewMessage);
+                        TextView textViewMessage = v.findViewById(R.id.textViewMessage);
                         textViewMessage.setText(model.getMessage());
                         textViewMessage.setVisibility(View.VISIBLE);
                     }
                     if (model.getVacName() != null) {
-                        TextView textViewVac = (TextView) v.findViewById(R.id.textView5vacnam);
+                        TextView textViewVac = v.findViewById(R.id.textView5vacnam);
                         textViewVac.setText(model.getVacName());
                         textViewVac.setVisibility(View.VISIBLE);
                     }
                     if (model.getFeedName() != null) {
-                        TextView textViewfeed = (TextView) v.findViewById(R.id.textView4feedname);
+                        TextView textViewfeed = v.findViewById(R.id.textView4feedname);
                         textViewfeed.setText(model.getFeedName());
                         textViewfeed.setVisibility(View.VISIBLE);
                     }
                     if (model.getCost() != null) {
-                        TextView textViewcost = (TextView) v.findViewById(R.id.textView6cost);
+                        TextView textViewcost = v.findViewById(R.id.textView6cost);
                         textViewcost.setText(model.getCost());
                         textViewcost.setVisibility(View.VISIBLE);
                     }
                     if (model.getDate() != null) {
-                        TextView textViewdate = (TextView) v.findViewById(R.id.textView3date);
+                        TextView textViewdate = v.findViewById(R.id.textView3date);
                         textViewdate.setText(model.getDate());
                         textViewdate.setVisibility(View.VISIBLE);
                     }

@@ -76,14 +76,14 @@ public class AddMilkLiterActivity extends AppCompatActivity {
                     }
                 });
         
-        editTextComment = (EditText) findViewById(R.id.editTextComments);
-        editTextLitersCollected = (EditText) findViewById(R.id.editTextLitersCollected);
-        editTextCowMilked = (EditText) findViewById(R.id.editTextCowsMilked);
-        buttonAddDate = (Button) findViewById(R.id.buttonAddDate);
-        buttonSubmit = (Button) findViewById(R.id.buttonSubmit);
-        aSwitchYog = (Switch) findViewById(R.id.switch1);
-        aSwitchMilk = (Switch) findViewById(R.id.switch2);
-        aSwitchMala = (Switch) findViewById(R.id.switch3);
+        editTextComment = findViewById(R.id.editTextComments);
+        editTextLitersCollected = findViewById(R.id.editTextLitersCollected);
+        editTextCowMilked = findViewById(R.id.editTextCowsMilked);
+        buttonAddDate = findViewById(R.id.buttonAddDate);
+        buttonSubmit = findViewById(R.id.buttonSubmit);
+        aSwitchYog = findViewById(R.id.switch1);
+        aSwitchMilk = findViewById(R.id.switch2);
+        aSwitchMala = findViewById(R.id.switch3);
 
         aSwitchYog.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

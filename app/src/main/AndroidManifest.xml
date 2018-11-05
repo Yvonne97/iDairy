@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActicity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,7 +40,7 @@
          <activity android:name=".SellMilk" />
          <activity android:name=".SellCow" />
         <activity android:name=".AddMilking" />
-        <activity android:name=".AddFedd" />
+        <activity android:name=".AddFeed" />
         <activity android:name=".AddVaccine" />
         <activity android:name=".BossJob" />
         <activity android:name=".AddDisease" />

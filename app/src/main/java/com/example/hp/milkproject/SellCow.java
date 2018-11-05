@@ -42,10 +42,10 @@ public class SellCow extends AppCompatActivity implements AdapterView.OnItemSele
 
         progressDialog = new ProgressDialog(this);
 
-        editTextDate = (EditText) findViewById(R.id.editTextDate);
-        editTextCost = (EditText) findViewById(R.id.editTextCost);
-        buttonDone = (Button) findViewById(R.id.buttonDone);
-        spinner = (Spinner) findViewById(R.id.spinner);
+        editTextDate = findViewById(R.id.editTextDate);
+        editTextCost = findViewById(R.id.editTextCost);
+        buttonDone = findViewById(R.id.buttonDone);
+        spinner = findViewById(R.id.spinner);
 
         spinner.setOnItemSelectedListener(this);
 

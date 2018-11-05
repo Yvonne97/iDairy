@@ -26,7 +26,7 @@ public class ViewCows extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_fragment_layout);
 
-        listView = (ListView) findViewById(R.id.listView);
+        listView = findViewById(R.id.listView);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Cows");
 
@@ -38,13 +38,13 @@ public class ViewCows extends AppCompatActivity {
         dataFirebaseListAdapter = new FirebaseListAdapter<dataModels>(options) {
             @Override
             protected void populateView(@NonNull View v, @NonNull dataModels model, final int position) {
-                TextView textViewName = (TextView) v.findViewById(R.id.textViewName);
+                TextView textViewName = v.findViewById(R.id.textViewName);
                 textViewName.setText(model.getName());
-                TextView textViewBirth = (TextView) v.findViewById(R.id.textViewBirth);
+                TextView textViewBirth = v.findViewById(R.id.textViewBirth);
                 textViewBirth.setText(model.getBirth());
-                TextView textViewBreed = (TextView) v.findViewById(R.id.textViewBreed);
+                TextView textViewBreed = v.findViewById(R.id.textViewBreed);
                 textViewBreed.setText(model.getBreed());;
-                TextView textViewKG = (TextView) v.findViewById(R.id.textViewKG);
+                TextView textViewKG = v.findViewById(R.id.textViewKG);
                 textViewKG.setText(model.getKg());
 
                 v.setOnClickListener(new View.OnClickListener() {

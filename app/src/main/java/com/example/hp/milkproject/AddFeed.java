@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddFedd extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AddFeed extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText editTextDate, editTextQuantity, editTextName;
     Button buttonDone;
@@ -37,16 +37,15 @@ public class AddFedd extends AppCompatActivity implements AdapterView.OnItemSele
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_fedd);
+        setContentView(R.layout.activity_add_feed);
 
         progressDialog = new ProgressDialog(this);
 
-        editTextDate = (EditText) findViewById(R.id.editTextDate);
-        editTextQuantity = (EditText) findViewById(R.id.editTextQuantity);
-        editTextName = (EditText) findViewById(R.id.editTextName);
-
-        buttonDone = (Button) findViewById(R.id.buttonDone);
-        spinner = (Spinner) findViewById(R.id.spinner);
+        editTextDate = findViewById(R.id.editTextDate);
+        editTextQuantity = findViewById(R.id.editTextQuantity);
+        editTextName = findViewById(R.id.editTextName);
+        buttonDone = findViewById(R.id.buttonDone);
+        spinner = findViewById(R.id.spinner);
 
         spinner.setOnItemSelectedListener(this);
 
@@ -54,7 +53,7 @@ public class AddFedd extends AppCompatActivity implements AdapterView.OnItemSele
             @Override
             public void onClick(View v) {
                 if (cowName.equals("Choose Cow")){
-                    Toast.makeText(AddFedd.this, "Please Choose a cow", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddFeed.this, "Please Choose a cow", Toast.LENGTH_SHORT).show();
                 }else {
                     Map<String, Object> map = new HashMap<>();
                     map.put("date", "date"+editTextDate.getText().toString());
@@ -99,7 +98,7 @@ public class AddFedd extends AppCompatActivity implements AdapterView.OnItemSele
                     AddMilking.GetName getName = postSnapshot.getValue(AddMilking.GetName.class);
                     stringsCategoryName.add(getName.getName());
                 }
-                final ArrayAdapter<String> adapterCategory = new ArrayAdapter<>(AddFedd.this, android.R.layout.simple_spinner_item, stringsCategoryName);
+                final ArrayAdapter<String> adapterCategory = new ArrayAdapter<>(AddFeed.this, android.R.layout.simple_spinner_item, stringsCategoryName);
                 adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(adapterCategory);
                 progressDialog.dismiss();

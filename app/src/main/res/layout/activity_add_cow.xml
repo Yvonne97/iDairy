@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:ems="10"
-        android:hint="Cow Name"
+        android:hint="@string/Cow_Name"
         android:inputType="textPersonName" />
 
     <EditText
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:ems="10"
-        android:hint="Cow Code"
+        android:hint="@string/Cow_Code"
         android:inputType="number" />
 
     <EditText
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:ems="10"
-        android:hint="Date Of Birth"
+        android:hint="@string/Cow_DOB"
         android:inputType="date" />
 
     <EditText
@@ -41,17 +41,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:ems="10"
-        android:hint="Weight (KG)"
+        android:hint="@string/Birth_Weight"
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/editTextBread"
+        android:id="@+id/editTextBreed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:ems="10"
-        android:hint="Cow Bread"
-        android:inputType="textPersonName" />
+        android:hint="@string/Cow_Breed"
+        android:inputType="text" />
 
     <Button
         android:id="@+id/buttonDone"
@@ -59,5 +59,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
-        android:text="Done" />
+        android:text="@string/AddCowButton" />
 </LinearLayout>

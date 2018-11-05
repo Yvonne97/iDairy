@@ -41,14 +41,13 @@ public class AddMilking extends AppCompatActivity implements AdapterView.OnItemS
 
         progressDialog = new ProgressDialog(this);
 
-        editTextDate = (EditText) findViewById(R.id.editTextDate);
-        editTextQuantity = (EditText) findViewById(R.id.editTextTotal);
-        editTextAM = (EditText) findViewById(R.id.editText7AM);
-        editTextNO = (EditText) findViewById(R.id.editText6NO);
-        editTextPM = (EditText) findViewById(R.id.editText4PM);
-
-        buttonDone = (Button) findViewById(R.id.buttonDone);
-        spinner = (Spinner) findViewById(R.id.spinner);
+        editTextDate = findViewById(R.id.editTextDate);
+        editTextQuantity = findViewById(R.id.editTextTotal);
+        editTextAM = findViewById(R.id.editText7AM);
+        editTextNO = findViewById(R.id.editText6NO);
+        editTextPM = findViewById(R.id.editText4PM);
+        buttonDone = findViewById(R.id.buttonDone);
+        spinner = findViewById(R.id.spinner);
 
         spinner.setOnItemSelectedListener(this);
 

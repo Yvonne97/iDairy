@@ -41,13 +41,13 @@ public class AddTreat extends AppCompatActivity implements AdapterView.OnItemSel
 
         progressDialog = new ProgressDialog(this);
 
-        editTextDate = (EditText) findViewById(R.id.editTextDate);
-        editTextCost = (EditText) findViewById(R.id.editTextcost);
-        editTextVete = (EditText) findViewById(R.id.editTextVete);
-        editTextdiag = (EditText) findViewById(R.id.editTextDiag);
+        editTextDate = findViewById(R.id.editTextDate);
+        editTextCost = findViewById(R.id.editTextcost);
+        editTextVete = findViewById(R.id.editTextVete);
+        editTextdiag = findViewById(R.id.editTextDiag);
 
-        buttonDone = (Button) findViewById(R.id.buttonDone);
-        spinner = (Spinner) findViewById(R.id.spinner);
+        buttonDone = findViewById(R.id.buttonDone);
+        spinner = findViewById(R.id.spinner);
 
         spinner.setOnItemSelectedListener(this);
 

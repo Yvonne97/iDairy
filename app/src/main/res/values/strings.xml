@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Milk Project</string>
+    <string name="app_name">lulus</string>
     <string name="title_activity_boss_tab">BossTabActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
@@ -8,4 +8,13 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_worker_home">WorkerHomeActivity</string>
     <string name="title_activity_worker_tab">WorkerTabActivity</string>
+
+<!--add cow-->
+
+    <string name="Cow_Name">Cow Name</string>
+    <string name="Cow_Code">Cow Code</string>
+    <string name="Cow_DOB">Date Of Birth</string>
+    <string name="Birth_Weight">Weight (KG)</string>
+    <string name="Cow_Breed">Cow Breed</string>
+    <string name="AddCowButton">Done</string>
 </resources>

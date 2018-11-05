@@ -36,9 +36,9 @@ public class WorkerProfileActivity extends Fragment {
 
         progressDialog = new ProgressDialog(getActivity());
 
-        editTextFname = (EditText) rootview.findViewById(R.id.editTextFname);
-        editTextSname = (EditText ) rootview.findViewById(R.id.editTextSname);
-        buttonUpdate = (Button) rootview.findViewById(R.id.buttonUpdate);
+        editTextFname = rootview.findViewById(R.id.editTextFname);
+        editTextSname = rootview.findViewById(R.id.editTextSname);
+        buttonUpdate = rootview.findViewById(R.id.buttonUpdate);
 
         userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 

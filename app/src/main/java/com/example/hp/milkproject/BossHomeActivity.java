@@ -32,7 +32,7 @@ public class BossHomeActivity extends Fragment {
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootview = inflater.inflate(R.layout.fragment_boss_home, container, false);
 
-        recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerView);
+        recyclerView = rootview.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         firebaseFirestore = FirebaseFirestore.getInstance();

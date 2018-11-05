@@ -33,12 +33,12 @@ public class AddCowActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextCode = (EditText) findViewById(R.id.editTextCowCode);
-        editTextBirth = (EditText) findViewById(R.id.editTextBirth);
-        editTextKG = (EditText) findViewById(R.id.editTextKG);
-        editTextBreed = (EditText) findViewById(R.id.editTextBread);
-        buttonDone = (Button) findViewById(R.id.buttonDone);
+        editTextName = findViewById(R.id.editTextName);
+        editTextCode = findViewById(R.id.editTextCowCode);
+        editTextBirth = findViewById(R.id.editTextBirth);
+        editTextKG = findViewById(R.id.editTextKG);
+        editTextBreed = findViewById(R.id.editTextBreed);
+        buttonDone = findViewById(R.id.buttonDone);
 
         buttonDone.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -27,10 +27,9 @@ public class AddDisease extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_disease);
 
-        editTextDis = (EditText) findViewById(R.id.editTextNameDis);
-        editTextDesc = (EditText) findViewById(R.id.editTextDesc);
-
-        buttonDone = (Button) findViewById(R.id.buttonDone);
+        editTextDis = findViewById(R.id.editTextNameDis);
+        editTextDesc = findViewById(R.id.editTextDesc);
+        buttonDone = findViewById(R.id.buttonDone);
 
         buttonDone.setOnClickListener(new View.OnClickListener() {
             @Override

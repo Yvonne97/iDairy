@@ -42,12 +42,12 @@ public class AddVaccine extends AppCompatActivity implements AdapterView.OnItemS
 
         progressDialog = new ProgressDialog(this);
 
-        editTextDate = (EditText) findViewById(R.id.editTextDate);
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextCost = (EditText) findViewById(R.id.editTextCost);
+        editTextDate = findViewById(R.id.editTextDate);
+        editTextName = findViewById(R.id.editTextName);
+        editTextCost = findViewById(R.id.editTextCost);
 
-        buttonDone = (Button) findViewById(R.id.buttonDone);
-        spinner = (Spinner) findViewById(R.id.spinner);
+        buttonDone = findViewById(R.id.buttonDone);
+        spinner = findViewById(R.id.spinner);
 
         spinner.setOnItemSelectedListener(this);
 

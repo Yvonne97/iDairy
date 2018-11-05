@@ -40,11 +40,11 @@ public class WorkerDetailsActivity extends AppCompatActivity {
         uid = bundle.getString("uid");
 
 
-        textViewFullNames = (TextView) findViewById(R.id.textViewFullNames);
+        textViewFullNames = findViewById(R.id.textViewFullNames);
         textViewFullNames.setText(fname+" "+sname);
 
-        buttonMessage = (Button) findViewById(R.id.buttonMessage);
-        buttonShowData = (Button) findViewById(R.id.buttonShow);
+        buttonMessage = findViewById(R.id.buttonMessage);
+        buttonShowData = findViewById(R.id.buttonShow);
 
         buttonShowData.setOnClickListener(new View.OnClickListener() {
             @Override

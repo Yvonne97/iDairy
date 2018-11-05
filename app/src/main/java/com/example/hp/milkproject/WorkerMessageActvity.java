@@ -31,7 +31,7 @@ public class WorkerMessageActvity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootview = inflater.inflate(R.layout.fragment_boss_message, container, false);
 
-        recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerView);
+        recyclerView = rootview.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         firebaseFirestore = FirebaseFirestore.getInstance();

@@ -41,12 +41,12 @@ public class SellMilk extends AppCompatActivity implements AdapterView.OnItemSel
 
         progressDialog = new ProgressDialog(this);
 
-        editTextDate = (EditText) findViewById(R.id.editTextDate);
-        editTextQuantity = (EditText) findViewById(R.id.editTextQuantity);
-        editTextCost = (EditText) findViewById(R.id.editTextCost);
+        editTextDate = findViewById(R.id.editTextDate);
+        editTextQuantity = findViewById(R.id.editTextQuantity);
+        editTextCost = findViewById(R.id.editTextCost);
 
-        buttonDone = (Button) findViewById(R.id.buttonDone);
-        spinner = (Spinner) findViewById(R.id.spinner);
+        buttonDone = findViewById(R.id.buttonDone);
+        spinner = findViewById(R.id.spinner);
 
         spinner.setOnItemSelectedListener(this);
 

@@ -46,9 +46,8 @@ public class BossProfileActivity extends Fragment {
     FirebaseFirestore firebaseFirestore;
     String userUid;
     ProgressDialog progressDialog;
-    StorageReference firebaseStorage;
+    //StorageReference firebaseStorage;
     private static final int CAMERA_PERMISSION = 3;
-    Uri uri, downloadUri;
 
     @Nullable
     @Override
@@ -57,10 +56,10 @@ public class BossProfileActivity extends Fragment {
 
         progressDialog = new ProgressDialog(getActivity());
 
-        editTextFname = (EditText) rootview.findViewById(R.id.editTextFname);
-        editTextSname = (EditText ) rootview.findViewById(R.id.editTextSname);
-        buttonUpdate = (Button) rootview.findViewById(R.id.buttonUpdate);
-        imageViewProfileImage = (ImageView) rootview.findViewById(R.id.imageViewProfileImage);
+        editTextFname = rootview.findViewById(R.id.editTextFname);
+        editTextSname = rootview.findViewById(R.id.editTextSname);
+        buttonUpdate = rootview.findViewById(R.id.buttonUpdate);
+        imageViewProfileImage = rootview.findViewById(R.id.imageViewProfileImage);
 
         userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 

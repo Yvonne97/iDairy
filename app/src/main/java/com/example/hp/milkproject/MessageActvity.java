@@ -56,8 +56,8 @@ public class MessageActvity extends AppCompatActivity {
         otherUserUid = bundle.getString("uid");
         otherFullNames = bundle.getString("fullNames");
 
-        editTextMessage = (EditText) findViewById(R.id.editTextMessage);
-        floatingActionButtonSend = (FloatingActionButton) findViewById(R.id.floatingActionButtonSend);
+        editTextMessage = findViewById(R.id.editTextMessage);
+        floatingActionButtonSend = findViewById(R.id.floatingActionButtonSend);
 
         editTextMessage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +125,7 @@ public class MessageActvity extends AppCompatActivity {
             }
         });
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         firebaseFirestore = FirebaseFirestore.getInstance();

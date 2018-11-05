@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
-
 public class WorkerJob extends AppCompatActivity {
 
     Button buttonViewPro, buttonSellCow, buttonSellMilk, buttonAddFeed,
@@ -20,12 +18,12 @@ public class WorkerJob extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_job);
 
-        buttonAddFeed = (Button) findViewById(R.id.buttonAddFeed);
-        buttonAddVac = (Button) findViewById(R.id.buttonAddVaccine);
-        buttonAddDis = (Button) findViewById(R.id.buttonAddDisease);
-        buttonAddCow = (Button) findViewById(R.id.buttonAddCow);
-        buttonView = (Button) findViewById(R.id.buttonView);
-        buttonAddTreat = (Button) findViewById(R.id.buttonAddTraet);
+        buttonAddFeed = findViewById(R.id.buttonAddFeed);
+        buttonAddVac = findViewById(R.id.buttonAddVaccine);
+        buttonAddDis = findViewById(R.id.buttonAddDisease);
+        buttonAddCow = findViewById(R.id.buttonAddCow);
+        buttonView = findViewById(R.id.buttonView);
+        buttonAddTreat = findViewById(R.id.buttonAddTraet);
 
         buttonAddCow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +51,7 @@ public class WorkerJob extends AppCompatActivity {
         buttonAddFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WorkerJob.this, AddFedd.class);
+                Intent intent = new Intent(WorkerJob.this, AddFeed.class);
                 startActivity(intent);
             }
         });
