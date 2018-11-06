@@ -35,15 +35,15 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Diagnosis"
-        android:inputType="textPersonName" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/editTextcost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Cost"
-        android:inputType="textPersonName" />
+        android:hint="Cost (Kshs)"
+        android:inputType="number" />
 
     <Button
         android:id="@+id/buttonDone"

@@ -26,7 +26,8 @@
             android:layout_toEndOf="@+id/imageViewProfileImage"
             android:text="Full Names"
             android:textColor="@android:color/background_dark"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_toRightOf="@+id/imageViewProfileImage" />
 
     </RelativeLayout>
 </LinearLayout>

@@ -9,8 +9,8 @@ import android.widget.Button;
 
 public class WorkerJob extends AppCompatActivity {
 
-    Button buttonViewPro, buttonSellCow, buttonSellMilk, buttonAddFeed,
-            buttonAddVac, buttonAddDis, buttonAddTreat, buttonAddMilk, buttonAddCow, buttonView;
+    Button buttonSellCow, buttonSellMilk, buttonAddFeed,
+            buttonAddVac, buttonAddMilking, buttonAddTreat, buttonAddDisease, buttonView;
     ProgressDialog progressDialog;
 
     @Override
@@ -20,12 +20,12 @@ public class WorkerJob extends AppCompatActivity {
 
         buttonAddFeed = findViewById(R.id.buttonAddFeed);
         buttonAddVac = findViewById(R.id.buttonAddVaccine);
-        buttonAddDis = findViewById(R.id.buttonAddDisease);
-        buttonAddCow = findViewById(R.id.buttonAddCow);
+        buttonAddMilking = findViewById(R.id.buttonAddMilking);
+        buttonAddDisease = findViewById(R.id.buttonAddDisease);
         buttonView = findViewById(R.id.buttonView);
-        buttonAddTreat = findViewById(R.id.buttonAddTraet);
+        buttonAddTreat = findViewById(R.id.buttonAddTreat);
 
-        buttonAddCow.setOnClickListener(new View.OnClickListener() {
+        buttonAddDisease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(WorkerJob.this, AddDisease.class));
@@ -40,7 +40,7 @@ public class WorkerJob extends AppCompatActivity {
         });
 
 
-        buttonAddDis.setOnClickListener(new View.OnClickListener() {
+        buttonAddMilking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WorkerJob.this, AddMilking.class);

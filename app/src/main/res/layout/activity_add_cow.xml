@@ -42,7 +42,7 @@
         android:layout_marginTop="7dp"
         android:ems="10"
         android:hint="@string/Birth_Weight"
-        android:inputType="number" />
+        android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/editTextBreed"
