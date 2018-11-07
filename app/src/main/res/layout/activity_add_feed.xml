@@ -32,6 +32,14 @@
         android:hint="Quantity"
         android:inputType="numberDecimal" />
 
+    <EditText
+        android:id="@+id/editTextCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Cost"
+        android:inputType="number" />
+
     <Button
         android:id="@+id/buttonDone"
         style="@style/Widget.AppCompat.Button.Colored"

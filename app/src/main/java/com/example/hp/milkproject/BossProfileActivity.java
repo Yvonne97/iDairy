@@ -24,11 +24,18 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -46,8 +53,10 @@ public class BossProfileActivity extends Fragment {
     FirebaseFirestore firebaseFirestore;
     String userUid;
     ProgressDialog progressDialog;
-    //StorageReference firebaseStorage;
+    StorageReference firebaseStorage;
     private static final int CAMERA_PERMISSION = 3;
+    //    private static final int CAMERA_PERMISSION = 3;
+    Uri uri, downloadUri;
 
     @Nullable
     @Override
@@ -56,10 +65,10 @@ public class BossProfileActivity extends Fragment {
 
         progressDialog = new ProgressDialog(getActivity());
 
-        editTextFname = rootview.findViewById(R.id.editTextFname);
-        editTextSname = rootview.findViewById(R.id.editTextSname);
-        buttonUpdate = rootview.findViewById(R.id.buttonUpdate);
-        imageViewProfileImage = rootview.findViewById(R.id.imageViewProfileImage);
+        editTextFname = (EditText) rootview.findViewById(R.id.editTextFname);
+        editTextSname = (EditText) rootview.findViewById(R.id.editTextSname);
+        buttonUpdate = (Button) rootview.findViewById(R.id.buttonUpdate);
+        imageViewProfileImage = (ImageView) rootview.findViewById(R.id.imageViewProfileImage);
 
         userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -76,9 +85,9 @@ public class BossProfileActivity extends Fragment {
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editTextFname.getText().toString().equals("") || editTextSname.getText().toString().equals("")){
+                if (editTextFname.getText().toString().equals("") || editTextSname.getText().toString().equals("")) {
                     Toast.makeText(getActivity(), "Please fill in all details", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     progressDialog.setMessage("Updating your account ...");
                     progressDialog.setCancelable(false);
                     progressDialog.show();
@@ -90,10 +99,10 @@ public class BossProfileActivity extends Fragment {
                     firebaseFirestore.collection("Users").document(userUid).update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
                                 Toast.makeText(getActivity(), "Profile Updated", Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();
-                            }else {
+                            } else {
                                 progressDialog.dismiss();
                             }
                         }
@@ -109,48 +118,87 @@ public class BossProfileActivity extends Fragment {
             }
         });
 
+        imageProfile();
+
         return rootview;
     }
 
-    private void takeImageDialog(){
-        String[] items = new String[]{"Take Photo", "Choose From Gallery"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.select_dialog_item, items);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
+    private void imageProfile() {
+        progressDialog.setMessage("Loading ...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Image").child(FirebaseAuth.getInstance().getUid());
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                if (which == 0) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if (getActivity().checkSelfPermission(android.Manifest.permission.CAMERA)
-                                != PackageManager.PERMISSION_GRANTED) {
-                            requestPermissions(new String[]{android.Manifest.permission.CAMERA},
-                                    CAMERA_PERMISSION);
-                        } else {
-                            openCamera();
-                        }
-                    }
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() == null) {
+                    Toast.makeText(getActivity(), "no image", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                 } else {
-                    Intent gallery = new Intent();
-                    gallery.setAction(Intent.ACTION_GET_CONTENT);
-                    gallery.setType("image/*");
-                    startActivityForResult(gallery, CAMERA_PERMISSION);
-                    dialog.cancel();
+                    GetImage getImage = dataSnapshot.getValue(GetImage.class);
+                    String url = getImage.getImg();
+                    Glide.with(getActivity()).load(url).into(imageViewProfileImage);
+                    progressDialog.dismiss();
                 }
             }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
         });
-        builder.show();
     }
 
-    private void openCamera(){
-        Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(camera, CAMERA_PERMISSION);
+    public static class GetImage {
+        String img;
+
+        public GetImage() {
+        }
+
+        public GetImage(String img) {
+            this.img = img;
+        }
+
+        public String getImg() {
+            return img;
+        }
+    }
+
+    private void takeImageDialog() {
+        Intent gallery = new Intent();
+        gallery.setAction(Intent.ACTION_GET_CONTENT);
+        gallery.setType("image/*");
+        startActivityForResult(gallery, CAMERA_PERMISSION);
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == CAMERA_PERMISSION && resultCode == RESULT_OK) {
+            final Uri uri = data.getData();
+
+            progressDialog.setMessage("Uploading Image ...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Image").child(uri.getLastPathSegment());
+            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Glide.with(getActivity()).load(taskSnapshot.getDownloadUrl()).into(imageViewProfileImage);
+                    Map<String, String> map = new HashMap<>();
+                    map.put("img", taskSnapshot.getDownloadUrl().toString());
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Image").child(FirebaseAuth.getInstance().getUid());
+                    databaseReference.setValue(map);
+                    progressDialog.dismiss();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getActivity(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }
-
