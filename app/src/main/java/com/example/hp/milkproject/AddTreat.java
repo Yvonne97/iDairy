@@ -46,14 +46,15 @@ public class AddTreat extends AppCompatActivity implements AdapterView.OnItemSel
         setContentView(R.layout.activity_add_treat);
 
         progressDialog = new ProgressDialog(this);
+        myCalendar = Calendar.getInstance();
 
-        editTextDate = findViewById(R.id.editTextDate);
-        editTextCost = findViewById(R.id.editTextcost);
-        editTextVete = findViewById(R.id.editTextVete);
-        editTextdiag = findViewById(R.id.editTextDiag);
+        editTextDate = (EditText) findViewById(R.id.editTextDate);
+        editTextCost = (EditText) findViewById(R.id.editTextcost);
+        editTextVete = (EditText) findViewById(R.id.editTextVete);
+        editTextdiag = (EditText) findViewById(R.id.editTextDiag);
 
-        buttonDone = findViewById(R.id.buttonDone);
-        spinner = findViewById(R.id.spinner);
+        buttonDone = (Button) findViewById(R.id.buttonDone);
+        spinner = (Spinner) findViewById(R.id.spinner);
 
         spinner.setOnItemSelectedListener(this);
 
@@ -110,7 +111,6 @@ public class AddTreat extends AppCompatActivity implements AdapterView.OnItemSel
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
         editTextDate.setText(sdf.format(myCalendar.getTime()));
     }
-
     private void getCategoryNames() {
 
         progressDialog.setMessage("Loading...");
